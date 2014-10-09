@@ -76,5 +76,19 @@ namespace FogBugzApi
 
             return fbCases;
         }
+
+        public void LogOff()
+        {
+            if(_authorized)
+            {
+                Dictionary<string, string> args = new Dictionary<string, string>
+                {
+                    { "cmd", "logoff" },
+                    { "token", _token }
+                };
+
+                requestHelper.GetResponseXml(_fbApiUrl, args);
+            }
+        }
     }
 }
