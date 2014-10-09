@@ -90,9 +90,6 @@ namespace FogBugzNotificator
 
 		private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-            if (fbAuth != null)
-                fbAuth.LogOff();
-
 			Application.Exit();
 		}
 
