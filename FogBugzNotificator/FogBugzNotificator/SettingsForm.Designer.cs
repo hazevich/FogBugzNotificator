@@ -64,7 +64,6 @@
             // 
             // saveButton
             // 
-            this.saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.saveButton.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.Location = new System.Drawing.Point(366, 36);
             this.saveButton.Name = "saveButton";
@@ -83,7 +82,11 @@
             this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SettingsForm";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "SettingsForm";
             this.ResumeLayout(false);
             this.PerformLayout();

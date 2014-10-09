@@ -20,7 +20,6 @@ namespace FogBugzNotificator
             InitializeComponent();
 			_fogBugz = fbClient;
 			this.StartPosition = FormStartPosition.CenterScreen;
-			//this.Show();
         }
 
         private IFogBugzClient _fogBugz;
@@ -172,6 +171,7 @@ namespace FogBugzNotificator
 
 			if (confirmResult == DialogResult.Yes)
 			{
+                _fogBugz.LogOff();
 				this.Dispose();
 				Application.Exit();
 			}
@@ -183,5 +183,17 @@ namespace FogBugzNotificator
 			this.BringToFront();
 			this.WindowState = FormWindowState.Normal;
 		}
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to LogOut?", "Confirm LogOut", MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                _fogBugz.LogOff();
+                new LoginForm().Show();
+                this.Dispose();
+            }
+        }
     }
 }

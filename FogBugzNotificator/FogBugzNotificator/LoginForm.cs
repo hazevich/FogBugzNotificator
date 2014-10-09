@@ -13,6 +13,8 @@ namespace FogBugzNotificator
 {
     public partial class LoginForm : Form
     {
+        IFogBugzClient fbAuth;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -41,16 +43,23 @@ namespace FogBugzNotificator
 
                         if (String.IsNullOrEmpty(Properties.Settings.Default.FogBugzUrl))
                         {
-                            MessageBox.Show("You need to provide your FogBugz URL");
+                            MessageBox.Show("You need to provide your FogBugz URL. Tap on cogwheel button to configure it.");
 
                             InvokeFromUIThread(() => EnableInputs(true));
                         }
                         else
                         {
-                            IFogBugzClient fbAuth = new FogBugzClient(Properties.Settings.Default.FogBugzUrl);
+                            bool auth = false;
+                            try
+                            { 
+                                fbAuth = new FogBugzClient(Properties.Settings.Default.FogBugzUrl);
 
-                            bool auth = fbAuth.Auth(@loginBox.Text, @passwordBox.Text);
-
+                                auth = fbAuth.Auth(@loginBox.Text, @passwordBox.Text);
+                            }
+                            catch
+                            {
+                                MessageBox.Show(string.Format("Cannot login using - {0}", Properties.Settings.Default.FogBugzUrl));
+                            }
                             if (auth)
                             {
                                 InvokeFromUIThread(() =>
@@ -81,6 +90,9 @@ namespace FogBugzNotificator
 
 		private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
+            if (fbAuth != null)
+                fbAuth.LogOff();
+
 			Application.Exit();
 		}
 
