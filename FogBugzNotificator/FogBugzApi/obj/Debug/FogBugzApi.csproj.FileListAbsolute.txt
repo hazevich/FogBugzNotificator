@@ -1,0 +1,5 @@
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzApi\bin\Debug\FogBugzApi.dll
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzApi\bin\Debug\FogBugzApi.pdb
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzApi\obj\Debug\FogBugzApi.csprojResolveAssemblyReference.cache
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzApi\obj\Debug\FogBugzApi.dll
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzApi\obj\Debug\FogBugzApi.pdb
