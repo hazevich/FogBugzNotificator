@@ -1,9 +1,10 @@
-﻿using FogBugzApi.Models;
+﻿using System.Collections.Generic;
+using System.Xml;
 
 namespace FogBugzApi.Helpers
 {
     interface IRequestHelper
     {
-        string GetResponse(string url, FogBugzCase data);
+        XmlDocument GetResponseXml(string baseUrl, Dictionary<string, string> args);
     }
 }

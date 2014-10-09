@@ -6,9 +6,9 @@ using FogBugzApi.Models;
 
 namespace FogBugzApi
 {
-    interface IFogBugzClient
+    public interface IFogBugzClient
     {
-        void Auth(string login, string password);
+        bool Auth(string login, string password);
         List<FogBugzCase> GetCasesAssignedToCurrentUser();
         void LogOff();
     }

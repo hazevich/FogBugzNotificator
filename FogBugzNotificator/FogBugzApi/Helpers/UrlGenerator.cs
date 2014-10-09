@@ -8,7 +8,7 @@ namespace FogBugzApi.Helpers
         {
             string args = string.Empty;
 
-            if (dictionary.Count == 0)
+            if (dictionary == null || dictionary.Count == 0)
                 return args;
 
             bool endOfQuery = false;

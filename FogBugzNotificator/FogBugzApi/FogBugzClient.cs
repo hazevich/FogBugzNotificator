@@ -5,6 +5,7 @@ using System.Text;
 using FogBugzApi.Helpers;
 using System.Xml;
 using FogBugzApi.Models;
+using System.Diagnostics;
 
 namespace FogBugzApi
 {
@@ -20,14 +21,15 @@ namespace FogBugzApi
 
         private void GetFBApiUrl()
         {
-            XmlDocument xmlDoc = requestHelper.GetResponseXml(_fbApiCheckUrl, null);
+            XmlDocument xmlDoc = requestHelper.GetResponseXml(_fbApiCheckUrl);
 
             if (xmlDoc == null)
-                throw new NullReferenceException("Couldn't retrieve api information");
+                throw new NullReferenceException(string.Format("Couldn't retrieve api information - {0}", _fbApiCheckUrl));
 
             string apiUrl = xmlConverter.XmlToFogBugzApiUrl(xmlDoc);
 
             _fbApiUrl = _fbUrl.AppendUrlResource(apiUrl);
+            Debug.WriteLine(_fbApiUrl);
         }
 
         public FogBugzClient(string fbUrl)
@@ -41,20 +43,23 @@ namespace FogBugzApi
             GetFBApiUrl();
         }
 
-        public void Auth(string login, string password)
+        public bool Auth(string login, string password)
         {
             Dictionary<string, string> args = new Dictionary<string, string>
             {
                 { "cmd", "logon" },
-                { "login", login },
+                { "email", login },
                 { "password", password }
             };
 
-            XmlDocument xml = requestHelper.GetResponseXml(_fbApiUrl, args);
+            XmlDocument xml = requestHelper.GetResponseXml1(_fbApiUrl, args);
 
             _token = xmlConverter.XmlToFogBugzToken(xml);
 
-            _authorized = true;
+            if(_token != null)
+                _authorized = true;
+
+            return _authorized;    
         }
 
         public List<FogBugzCase> GetCasesAssignedToCurrentUser()
@@ -64,8 +69,8 @@ namespace FogBugzApi
 
             Dictionary<string, string> args = new Dictionary<string, string>
             {
-                { "cmd", "search" },
                 { "token", _token },
+                { "cmd", "search" },
                 { "q", "assignedto:me" },
                 { "cols", "sTitle,sStatus,sPriority,ixPriority" }
             };
