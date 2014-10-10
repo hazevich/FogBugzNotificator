@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using FogBugzApi.Helpers;
-using System.Xml;
+﻿using FogBugzApi.Helpers;
 using FogBugzApi.Models;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Xml;
 
 namespace FogBugzApi
 {
@@ -52,7 +50,7 @@ namespace FogBugzApi
                 { "password", password }
             };
 
-            XmlDocument xml = requestHelper.GetResponseXml1(_fbApiUrl, args);
+            XmlDocument xml = requestHelper.GetResponseXml(_fbApiUrl, args, "get");
 
             _token = xmlConverter.XmlToFogBugzToken(xml);
 
@@ -75,7 +73,7 @@ namespace FogBugzApi
                 { "cols", "sTitle,sStatus,sPriority,ixPriority" }
             };
 
-            XmlDocument xml = requestHelper.GetResponseXml(_fbApiUrl, args);
+            XmlDocument xml = requestHelper.GetResponseXml(_fbApiUrl, args, "post");
 
             List<FogBugzCase> fbCases = xmlConverter.XmlToFugBugzCases(xml);
 
@@ -92,7 +90,7 @@ namespace FogBugzApi
                     { "token", _token }
                 };
 
-                requestHelper.GetResponseXml(_fbApiUrl, args);
+                requestHelper.GetResponseXml(_fbApiUrl, args, "post");
             }
         }
     }

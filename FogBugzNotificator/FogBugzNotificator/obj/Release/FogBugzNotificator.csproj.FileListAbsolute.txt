@@ -1,0 +1,14 @@
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\bin\Release\FogBugzNotificator.exe.config
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\bin\Release\FogBugzNotificator.exe
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\bin\Release\FogBugzNotificator.pdb
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\bin\Release\FogBugzApi.dll
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\bin\Release\FogBugzApi.pdb
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzNotificator.csprojResolveAssemblyReference.cache
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzNotificator.LoginForm.resources
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzNotificator.MainForm.resources
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzApi.NotificationsForm.resources
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzNotificator.Properties.Resources.resources
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzNotificator.SettingsForm.resources
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzNotificator.csproj.GenerateResource.Cache
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzNotificator.exe
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzNotificator.pdb

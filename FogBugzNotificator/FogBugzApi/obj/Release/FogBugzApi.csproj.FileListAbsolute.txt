@@ -1,0 +1,4 @@
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzApi\bin\Release\FogBugzApi.dll
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzApi\bin\Release\FogBugzApi.pdb
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzApi\obj\Release\FogBugzApi.dll
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzApi\obj\Release\FogBugzApi.pdb

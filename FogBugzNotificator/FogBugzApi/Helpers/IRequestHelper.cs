@@ -5,6 +5,6 @@ namespace FogBugzApi.Helpers
 {
     interface IRequestHelper
     {
-        XmlDocument GetResponseXml(string baseUrl, Dictionary<string, string> args);
+        XmlDocument GetResponseXml(string baseUrl, Dictionary<string, string> args, string method);
     }
 }

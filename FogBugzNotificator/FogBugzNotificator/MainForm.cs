@@ -1,15 +1,11 @@
-﻿using System;
+﻿using FogBugzApi;
+using FogBugzApi.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using System.Diagnostics;
-using FogBugzApi;
-using FogBugzApi.Models;
 
 namespace FogBugzNotificator
 {
@@ -24,6 +20,84 @@ namespace FogBugzNotificator
 
         private IFogBugzClient _fogBugz;
 		private List<FogBugzCase> _currentCases;
+        private System.Timers.Timer notifTimer = new System.Timers.Timer();
+        private bool _notificationOpened = false;
+
+        private void SetupTimer()
+        {
+            notifTimer.Elapsed += notifTimer_Elapsed;
+            notifTimer.Interval = 300000;
+            notifTimer.Enabled = true;
+        }
+
+        private void notifTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            
+            List<FogBugzCase> cases = new List<FogBugzCase>();
+            TryToRequest(() => cases = _fogBugz.GetCasesAssignedToCurrentUser());
+
+            if (cases != null || cases.Count > 0)
+            {
+                List<FogBugzCase> newCases = new List<FogBugzCase>();
+
+                foreach (var c in cases)
+                {
+                    if (!_currentCases.Contains(c))
+                    {
+                        newCases.Add(c);
+                    }
+
+                }
+
+                if (newCases.Count > 0)
+                {
+                    this.Invoke(new MethodInvoker(() =>
+                    {
+                        casesListView.Items.Clear();
+
+                        foreach (var c in newCases)
+                        {
+                            ListViewItem item = new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority });
+                            item.BackColor = Color.DarkOrange;
+                            casesListView.Items.Add(item);
+
+                            cases.Remove(c);
+                        }
+
+                        foreach (var c in cases)
+                        {
+                            ListViewItem item = new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority });
+                            casesListView.Items.Add(item);
+                        }
+                    }));
+
+                    Thread notificationThread = new Thread(new ThreadStart(() =>
+                    {
+                        if (!_notificationOpened)
+                        {
+                            this.Invoke(new MethodInvoker(() =>
+                            {
+                                NotificationsForm notificationForm = new NotificationsForm();
+                                notificationForm.CasesCount = newCases.Count;
+                                _notificationOpened = true;
+                                notificationForm.Show();
+                                notificationForm.BringToFront();
+                                _notificationOpened = false;
+                            }));
+                        }
+                    }));
+
+                    notificationThread.Name = "Notification Thread";
+                    notificationThread.IsBackground = true;
+                    notificationThread.Start();
+
+                    _currentCases = new List<FogBugzCase>();
+                    _currentCases.AddRange(newCases);
+                    _currentCases.AddRange(cases);
+                }
+             
+            }
+        }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -35,7 +109,7 @@ namespace FogBugzNotificator
 			foreach (var c in cases)
 				casesListView.Items.Add(new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority }));
 
-			NewCasesHandler();
+            SetupTimer();
 		}
 
 		private void casesListView_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -83,64 +157,7 @@ namespace FogBugzNotificator
 				while (true)
 				{
 
-                    List<FogBugzCase> cases = new List<FogBugzCase>();
-                    TryToRequest(() => cases = _fogBugz.GetCasesAssignedToCurrentUser());
-
-                    if (cases != null)
-                    {
-                        List<FogBugzCase> newCases = new List<FogBugzCase>();
-
-                        foreach (var c in cases)
-                        {
-                            if (!_currentCases.Contains(c))
-                            {
-                                newCases.Add(c);
-                            }
-
-                        }
-
-                        if (newCases.Count > 0)
-                        {
-                            this.Invoke(new MethodInvoker(() =>
-                                {
-                                    casesListView.Items.Clear();
-
-                                    foreach (var c in newCases)
-                                    {
-                                        ListViewItem item = new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority });
-                                        item.BackColor = Color.DarkOrange;
-                                        casesListView.Items.Add(item);
-
-                                        cases.Remove(c);
-                                    }
-
-                                    foreach (var c in cases)
-                                    {
-                                        ListViewItem item = new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority });
-                                        casesListView.Items.Add(item);
-                                    }
-                                }));
-
-                            Thread notificationThread = new Thread(new ThreadStart(() =>
-                                {
-                                    this.Invoke(new MethodInvoker(() =>
-                                        {
-                                            NotificationsForm notificationForm = new NotificationsForm();
-                                            notificationForm.CasesCount = newCases.Count;
-                                            notificationForm.Show();
-                                            notificationForm.BringToFront();
-                                        }));
-                                }));
-
-                            notificationThread.Name = "Notification Thread";
-                            notificationThread.IsBackground = true;
-                            notificationThread.Start();
-                        }
-
-                        _currentCases = new List<FogBugzCase>();
-                        _currentCases.AddRange(newCases);
-                        _currentCases.AddRange(cases);
-                    }
+                    
 					Thread.Sleep(TimeSpan.FromSeconds(10));
 				}
 			}));
@@ -207,8 +224,9 @@ namespace FogBugzNotificator
             {
                 action();
             }
-            catch(System.Net.WebException)
+            catch(Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 MessageBox.Show(string.Format("Can't access {0}", Properties.Settings.Default.FogBugzUrl));
             }
         }

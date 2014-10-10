@@ -50,9 +50,9 @@
             this.label2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(140, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 14);
+            this.label2.Size = new System.Drawing.Size(156, 14);
             this.label2.TabIndex = 1;
-            this.label2.Text = "(www.example.com)";
+            this.label2.Text = "(http(s)://www.example.com)";
             // 
             // urlTextBox
             // 

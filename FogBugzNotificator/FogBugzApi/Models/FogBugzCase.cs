@@ -1,4 +1,5 @@
-﻿namespace FogBugzApi.Models
+﻿
+namespace FogBugzApi.Models
 {
     public class FogBugzCase
     {

@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using FogBugzApi;
+using System;
 using System.Threading;
 using System.Windows.Forms;
-using FogBugzApi;
 
 namespace FogBugzNotificator
 {
     public partial class LoginForm : Form
     {
-        IFogBugzClient fbAuth;
+        IFogBugzClient _fbAuth;
+        bool _auth;
 
         public LoginForm()
         {
@@ -27,11 +22,11 @@ namespace FogBugzNotificator
                 {
                     if (string.IsNullOrEmpty(loginBox.Text) || string.IsNullOrEmpty(passwordBox.Text))
                     {
-                        this.Invoke(new MethodInvoker(() =>
+                        InvokeFromUIThread(() =>
                             {
                                 errorLabel.Text = "Credentials can't be empty";
                                 errorLabel.Visible = true;
-                            }));
+                            });
                     }
                     else
                     {
@@ -41,7 +36,7 @@ namespace FogBugzNotificator
                                 EnableInputs(false);
                             });
 
-                        if (String.IsNullOrEmpty(Properties.Settings.Default.FogBugzUrl))
+                        if (string.IsNullOrEmpty(Properties.Settings.Default.FogBugzUrl))
                         {
                             MessageBox.Show("You need to provide your FogBugz URL. Tap on cogwheel button to configure it.");
 
@@ -49,22 +44,23 @@ namespace FogBugzNotificator
                         }
                         else
                         {
-                            bool auth = false;
+                            _auth = false;
+
                             try
                             { 
-                                fbAuth = new FogBugzClient(Properties.Settings.Default.FogBugzUrl);
+                                _fbAuth = new FogBugzClient(Properties.Settings.Default.FogBugzUrl);
 
-                                auth = fbAuth.Auth(@loginBox.Text, @passwordBox.Text);
+                                _auth = _fbAuth.Auth(@loginBox.Text, @passwordBox.Text);
                             }
                             catch
                             {
                                 MessageBox.Show(string.Format("Cannot login using - {0}", Properties.Settings.Default.FogBugzUrl));
                             }
-                            if (auth)
+                            if (_auth)
                             {
                                 InvokeFromUIThread(() =>
                                     {
-                                        MainForm main = new MainForm(fbAuth);
+                                        MainForm main = new MainForm(_fbAuth);
                                         main.Show();
                                         this.Close();
                                     });

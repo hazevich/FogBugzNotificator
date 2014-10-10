@@ -10,47 +10,16 @@ namespace FogBugzApi.Helpers
 {
     public class RequestHelper : IRequestHelper
     {
-        public XmlDocument GetResponseXml(string baseUrl, Dictionary<string, string> args)
+        public XmlDocument GetResponseXml(string baseUrl, Dictionary<string, string> args, string method)
         {
             XmlDocument responseXml = new XmlDocument();
             string argsString = args.ToArgsString();
 
-            Debug.WriteLine(baseUrl + argsString);
-
-            HttpWebRequest request = WebRequest.Create(baseUrl+argsString) as HttpWebRequest;
-
-            request.Method = "POST";
-            request.ContentType = "multipart/form-data";
-
-            if (args != null)
-            {
-                byte[] data = Encoding.UTF8.GetBytes(argsString);
-
-                request.ContentLength = data.Length;
-
-                using (Stream s = request.GetRequestStream())
-                {
-                    s.Write(data, 0, data.Length);
-                }
-            }
+            if (method.ToLower().Equals("post"))
+                responseXml = PostRequest(baseUrl, argsString);
             else
-            {
-                request.ContentLength = 0;
-            }
-
-            try
-            {
-                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-
-                responseXml.Load(response.GetResponseStream());
-            }
-            catch(Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-
-                return null;
-            }
-
+                responseXml = GetRequest(baseUrl, argsString);
+            
             return responseXml;
         }
 
@@ -75,16 +44,55 @@ namespace FogBugzApi.Helpers
             return responseXml;
         }
 
-        public XmlDocument GetResponseXml1(string baseUrl, Dictionary<string, string> args)
+        private XmlDocument GetRequest(string baseUrl, string stringArgs)
         {
             XmlDocument responseXml = new XmlDocument();
-            string stringArgs = args.ToArgsString();
 
-            HttpWebRequest request = WebRequest.Create(baseUrl+stringArgs) as HttpWebRequest;
+            HttpWebRequest request = WebRequest.Create(baseUrl + stringArgs) as HttpWebRequest;
 
             try
             {
                 HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                responseXml.Load(response.GetResponseStream());
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+
+                return null;
+            }
+
+            return responseXml;
+        }
+
+        private XmlDocument PostRequest(string baseUrl, string stringArgs)
+        {
+            XmlDocument responseXml = new XmlDocument();
+            HttpWebRequest request = WebRequest.Create(baseUrl + stringArgs) as HttpWebRequest;
+
+            request.Method = "POST";
+            request.ContentType = "multipart/form-data";
+
+            if (stringArgs != null)
+            {
+                byte[] data = Encoding.UTF8.GetBytes(stringArgs);
+
+                request.ContentLength = data.Length;
+
+                using (Stream s = request.GetRequestStream())
+                {
+                    s.Write(data, 0, data.Length);
+                }
+            }
+            else
+            {
+                request.ContentLength = 0;
+            }
+
+            try
+            {
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+
                 responseXml.Load(response.GetResponseStream());
             }
             catch (Exception ex)
