@@ -62,6 +62,12 @@
     <Compile Include="NotificationsForm.Designer.cs">
       <DependentUpon>NotificationsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popups\AboutPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\AboutPopup.Designer.cs">
+      <DependentUpon>AboutPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popups\ConnectionErrorPopup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NotificationsForm.resx">
       <DependentUpon>NotificationsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\AboutPopup.resx">
+      <DependentUpon>AboutPopup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popups\ConnectionErrorPopup.resx">
       <DependentUpon>ConnectionErrorPopup.cs</DependentUpon>
@@ -140,6 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\error_pic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cogwheel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mainlogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

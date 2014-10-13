@@ -106,7 +106,7 @@
             // 
             // settingsButton
             // 
-            this.settingsButton.Image = global::FogBugzNotificator.Properties.Resources.cogwheel_318_10805;
+            this.settingsButton.Image = global::FogBugzNotificator.Properties.Resources.cogwheel;
             this.settingsButton.Location = new System.Drawing.Point(12, 238);
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(40, 40);
@@ -116,7 +116,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::FogBugzNotificator.Properties.Resources.mainlogo;
             this.pictureBox1.Location = new System.Drawing.Point(12, 11);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(197, 78);

@@ -14,3 +14,4 @@ D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNoti
 D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzNotificator.pdb
 D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzNotificator.Popups.ConnectionErrorPopup.resources
 D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzNotificator.Popups.FreshInstallPopup.resources
+D:\GitHubRepos\desktop\FogBugz\FogBugzNotificator\FogBugzNotificator\FogBugzNotificator\obj\Release\FogBugzNotificator.Popups.AboutPopup.resources

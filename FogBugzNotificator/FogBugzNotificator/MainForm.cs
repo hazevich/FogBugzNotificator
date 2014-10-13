@@ -17,10 +17,12 @@ namespace FogBugzNotificator
             InitializeComponent();
 			_fogBugz = fbClient;
 			this.StartPosition = FormStartPosition.CenterScreen;
+            _aboutPopup.Version = "BETA v1.2";
         }
 
         private ConnectionErrorPopup _connectionErrorPopup = new ConnectionErrorPopup();
-        NotificationsForm _notificationForm = new NotificationsForm();
+        private NotificationsForm _notificationForm = new NotificationsForm();
+        private AboutPopup _aboutPopup = new AboutPopup();
         private IFogBugzClient _fogBugz;
 		private List<FogBugzCase> _currentCases;
         private System.Timers.Timer notifTimer = new System.Timers.Timer();
@@ -225,6 +227,11 @@ namespace FogBugzNotificator
                 Debug.WriteLine(ex.Message);
                 _connectionErrorPopup.ShowDialog();
             }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _aboutPopup.ShowDialog();
         }
     }
 }

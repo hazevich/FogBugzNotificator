@@ -63,9 +63,9 @@ namespace FogBugzNotificator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cogwheel_318_10805 {
+        internal static System.Drawing.Bitmap cogwheel {
             get {
-                object obj = ResourceManager.GetObject("cogwheel_318_10805", resourceCulture);
+                object obj = ResourceManager.GetObject("cogwheel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -76,6 +76,16 @@ namespace FogBugzNotificator.Properties {
         internal static System.Drawing.Bitmap error_pic {
             get {
                 object obj = ResourceManager.GetObject("error_pic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mainlogo {
+            get {
+                object obj = ResourceManager.GetObject("mainlogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
