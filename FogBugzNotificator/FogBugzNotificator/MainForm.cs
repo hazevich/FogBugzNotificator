@@ -17,7 +17,7 @@ namespace FogBugzNotificator
             InitializeComponent();
 			_fogBugz = fbClient;
 			this.StartPosition = FormStartPosition.CenterScreen;
-            _aboutPopup.Version = "BETA v1.2";
+            _aboutPopup.Version = "BETA v1.3";
         }
 
         private ConnectionErrorPopup _connectionErrorPopup = new ConnectionErrorPopup();
