@@ -2,6 +2,7 @@
 using System;
 using System.Threading;
 using System.Windows.Forms;
+using FogBugzNotificator.Popups;
 
 namespace FogBugzNotificator
 {
@@ -38,7 +39,8 @@ namespace FogBugzNotificator
 
                         if (string.IsNullOrEmpty(Properties.Settings.Default.FogBugzUrl))
                         {
-                            MessageBox.Show("You need to provide your FogBugz URL. Tap on cogwheel button to configure it.");
+                            new FreshInstallPopup().ShowDialog();
+                            
 
                             InvokeFromUIThread(() => EnableInputs(true));
                         }
