@@ -28,28 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.warningPictureBox = new System.Windows.Forms.PictureBox();
             this.errorMessage = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.warningPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.warningPictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // warningPictureBox
-            // 
-            this.warningPictureBox.Image = global::FogBugzNotificator.Properties.Resources.error_pic;
-            this.warningPictureBox.Location = new System.Drawing.Point(12, 12);
-            this.warningPictureBox.Name = "warningPictureBox";
-            this.warningPictureBox.Size = new System.Drawing.Size(100, 100);
-            this.warningPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.warningPictureBox.TabIndex = 4;
-            this.warningPictureBox.TabStop = false;
             // 
             // errorMessage
             // 
             this.errorMessage.AutoSize = true;
             this.errorMessage.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorMessage.Location = new System.Drawing.Point(118, 55);
-            this.errorMessage.MaximumSize = new System.Drawing.Size(335, 0);
+            this.errorMessage.MaximumSize = new System.Drawing.Size(310, 0);
             this.errorMessage.Name = "errorMessage";
             this.errorMessage.Size = new System.Drawing.Size(107, 18);
             this.errorMessage.TabIndex = 5;
@@ -65,6 +55,16 @@
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // warningPictureBox
+            // 
+            this.warningPictureBox.Image = global::FogBugzNotificator.Properties.Resources.error_pic;
+            this.warningPictureBox.Location = new System.Drawing.Point(12, 12);
+            this.warningPictureBox.Name = "warningPictureBox";
+            this.warningPictureBox.Size = new System.Drawing.Size(100, 100);
+            this.warningPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.warningPictureBox.TabIndex = 4;
+            this.warningPictureBox.TabStop = false;
             // 
             // ConnectionErrorPopup
             // 
