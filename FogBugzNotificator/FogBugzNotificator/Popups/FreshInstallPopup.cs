@@ -21,13 +21,13 @@ namespace FogBugzNotificator.Popups
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
 
         private void setupButton_Click(object sender, EventArgs e)
         {
             _settingsForm.ShowDialog();
-            this.Dispose();
+            this.Close();
         }
     }
 }

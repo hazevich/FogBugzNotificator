@@ -35,9 +35,11 @@
             this.loginLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.loaderBox = new System.Windows.Forms.PictureBox();
             this.settingsButton = new FogBugzNotificator.Buttons.FlatButton();
             this.loginButton = new FogBugzNotificator.Buttons.FlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loaderBox)).BeginInit();
             this.SuspendLayout();
             // 
             // loginBox
@@ -100,6 +102,17 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // loaderBox
+            // 
+            this.loaderBox.BackColor = System.Drawing.Color.Transparent;
+            this.loaderBox.Image = global::FogBugzNotificator.Properties.Resources.ajax_loader;
+            this.loaderBox.Location = new System.Drawing.Point(93, 95);
+            this.loaderBox.Name = "loaderBox";
+            this.loaderBox.Size = new System.Drawing.Size(26, 27);
+            this.loaderBox.TabIndex = 10;
+            this.loaderBox.TabStop = false;
+            this.loaderBox.Visible = false;
+            // 
             // settingsButton
             // 
             this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -132,6 +145,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(221, 286);
+            this.Controls.Add(this.loaderBox);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordLabel);
@@ -147,6 +161,7 @@
             this.Text = "FogBugz Notificator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loaderBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +177,6 @@
         private System.Windows.Forms.Label passwordLabel;
         private Buttons.FlatButton loginButton;
         private Buttons.FlatButton settingsButton;
+        private System.Windows.Forms.PictureBox loaderBox;
     }
 }

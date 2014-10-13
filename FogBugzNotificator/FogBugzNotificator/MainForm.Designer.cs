@@ -72,17 +72,17 @@
             // Title
             // 
             this.Title.Text = "Title";
-            this.Title.Width = 794;
+            this.Title.Width = 607;
             // 
             // Status
             // 
             this.Status.Text = "Status";
-            this.Status.Width = 92;
+            this.Status.Width = 108;
             // 
             // Priority
             // 
             this.Priority.Text = "Priority";
-            this.Priority.Width = 127;
+            this.Priority.Width = 143;
             // 
             // casesAssignedToYouLabel
             // 

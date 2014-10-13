@@ -105,7 +105,7 @@ namespace FogBugzNotificator
 			_currentCases = cases;
 
 			foreach (var c in cases)
-				casesListView.Items.Add(new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority }));
+                casesListView.Items.Add(new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority }));
 
             SetupTimer();
 		}

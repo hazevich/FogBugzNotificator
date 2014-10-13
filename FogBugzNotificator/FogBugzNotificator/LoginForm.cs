@@ -31,6 +31,7 @@ namespace FogBugzNotificator
             {
                 InvokeFromUIThread(() =>
                     {
+                        loaderBox.Visible = true;
                         errorLabel.Visible = false;
                         EnableInputs(false);
                     });
@@ -40,40 +41,48 @@ namespace FogBugzNotificator
                     new FreshInstallPopup().ShowDialog();
                             
 
-                    InvokeFromUIThread(() => EnableInputs(true));
+                    InvokeFromUIThread(() => 
+                        {
+                            loaderBox.Visible = false;
+                            EnableInputs(true);
+                        });
                 }
                 else
                 {
                     _auth = false;
 
-                    try
-                    { 
-                        _fbAuth = new FogBugzClient(Properties.Settings.Default.FogBugzUrl);
+                    new Thread(new ThreadStart(() =>
+                        {
+                            try
+                            {
+                                _fbAuth = new FogBugzClient(Properties.Settings.Default.FogBugzUrl);
 
-                        _auth = _fbAuth.Auth(@loginBox.Text, @passwordBox.Text);
-                    }
-                    catch
-                    {
-                        new ConnectionErrorPopup().ShowDialog();
-                    }
-                    if (_auth)
-                    {
-                        InvokeFromUIThread(() =>
+                                _auth = _fbAuth.Auth(@loginBox.Text, @passwordBox.Text);
+                            }
+                            catch
                             {
-                                MainForm main = new MainForm(_fbAuth);
-                                main.Show();
-                                this.Close();
-                            });
-                    }
-                    else
-                    {
-                        InvokeFromUIThread(() =>
+                                new ConnectionErrorPopup().ShowDialog();
+                            }
+                            if (_auth)
                             {
-                                EnableInputs(true);
-                                errorLabel.Text = "Wrong login or password";
-                                errorLabel.Visible = true;
-                            });
-                    }
+                                InvokeFromUIThread(() =>
+                                {
+                                    MainForm main = new MainForm(_fbAuth);
+                                    main.Show();
+                                    this.Close();
+                                });
+                            }
+                            else
+                            {
+                                InvokeFromUIThread(() =>
+                                {
+                                    loaderBox.Visible = false;
+                                    EnableInputs(true);
+                                    errorLabel.Text = "Wrong login or password";
+                                    errorLabel.Visible = true;
+                                });
+                            }
+                        })).Start();
                 }
             }
         }
@@ -86,6 +95,7 @@ namespace FogBugzNotificator
 
         private void EnableInputs(bool enable)
         {
+            settingsButton.Enabled = enable;
             loginBox.Enabled = enable;
             passwordBox.Enabled = enable;
             loginButton.Enabled = enable;
