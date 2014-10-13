@@ -19,76 +19,69 @@ namespace FogBugzNotificator
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-           Thread checkCredsThread = new Thread(new ThreadStart(() =>
+            if (string.IsNullOrEmpty(loginBox.Text) || string.IsNullOrEmpty(passwordBox.Text))
+            {
+                InvokeFromUIThread(() =>
+                    {
+                        errorLabel.Text = "Credentials can't be empty";
+                        errorLabel.Visible = true;
+                    });
+            }
+            else
+            {
+                InvokeFromUIThread(() =>
+                    {
+                        errorLabel.Visible = false;
+                        EnableInputs(false);
+                    });
+
+                if (string.IsNullOrEmpty(Properties.Settings.Default.FogBugzUrl))
                 {
-                    if (string.IsNullOrEmpty(loginBox.Text) || string.IsNullOrEmpty(passwordBox.Text))
+                    new FreshInstallPopup().ShowDialog();
+                            
+
+                    InvokeFromUIThread(() => EnableInputs(true));
+                }
+                else
+                {
+                    _auth = false;
+
+                    try
+                    { 
+                        _fbAuth = new FogBugzClient(Properties.Settings.Default.FogBugzUrl);
+
+                        _auth = _fbAuth.Auth(@loginBox.Text, @passwordBox.Text);
+                    }
+                    catch
+                    {
+                        new ConnectionErrorPopup().ShowDialog();
+                    }
+                    if (_auth)
                     {
                         InvokeFromUIThread(() =>
                             {
-                                errorLabel.Text = "Credentials can't be empty";
-                                errorLabel.Visible = true;
+                                MainForm main = new MainForm(_fbAuth);
+                                main.Show();
+                                this.Close();
                             });
                     }
                     else
                     {
                         InvokeFromUIThread(() =>
                             {
-                                errorLabel.Visible = false;
-                                EnableInputs(false);
+                                EnableInputs(true);
+                                errorLabel.Text = "Wrong login or password";
+                                errorLabel.Visible = true;
                             });
-
-                        if (string.IsNullOrEmpty(Properties.Settings.Default.FogBugzUrl))
-                        {
-                            new FreshInstallPopup().ShowDialog();
-                            
-
-                            InvokeFromUIThread(() => EnableInputs(true));
-                        }
-                        else
-                        {
-                            _auth = false;
-
-                            try
-                            { 
-                                _fbAuth = new FogBugzClient(Properties.Settings.Default.FogBugzUrl);
-
-                                _auth = _fbAuth.Auth(@loginBox.Text, @passwordBox.Text);
-                            }
-                            catch
-                            {
-                                new ConnectionErrorPopup().ShowDialog();
-                            }
-                            if (_auth)
-                            {
-                                InvokeFromUIThread(() =>
-                                    {
-                                        MainForm main = new MainForm(_fbAuth);
-                                        main.Show();
-                                        this.Close();
-                                    });
-                            }
-                            else
-                            {
-                                InvokeFromUIThread(() =>
-                                    {
-                                        EnableInputs(true);
-                                        errorLabel.Text = "Wrong login or password";
-                                        errorLabel.Visible = true;
-                                    });
-                            }
-                        }
                     }
-                }));
-
-		   checkCredsThread.Name = "Check Creds Thread";
-		   checkCredsThread.IsBackground = true;
-		   checkCredsThread.Start();
-
+                }
+            }
         }
 
 		private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			Application.Exit();
+            if(!_auth)
+			    Application.Exit();
 		}
 
         private void EnableInputs(bool enable)

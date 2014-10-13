@@ -17,6 +17,8 @@ namespace FogBugzNotificator.Popups
             InitializeComponent();
         }
 
+        private SettingsForm _settingsForm = new SettingsForm();
+
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -24,7 +26,7 @@ namespace FogBugzNotificator.Popups
 
         private void setupButton_Click(object sender, EventArgs e)
         {
-            new SettingsForm().ShowDialog();
+            _settingsForm.ShowDialog();
             this.Dispose();
         }
     }
