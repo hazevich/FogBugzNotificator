@@ -36,7 +36,6 @@
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Priority = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.casesAssignedToYouLabel = new System.Windows.Forms.Label();
-            this.refreshCasesListButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +43,7 @@
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshCasesListButton = new FogBugzNotificator.Buttons.FlatButton();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,22 +88,11 @@
             // 
             this.casesAssignedToYouLabel.AutoSize = true;
             this.casesAssignedToYouLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.casesAssignedToYouLabel.Location = new System.Drawing.Point(3, 26);
+            this.casesAssignedToYouLabel.Location = new System.Drawing.Point(12, 43);
             this.casesAssignedToYouLabel.Name = "casesAssignedToYouLabel";
             this.casesAssignedToYouLabel.Size = new System.Drawing.Size(160, 19);
             this.casesAssignedToYouLabel.TabIndex = 1;
             this.casesAssignedToYouLabel.Text = "Cases assigned to you:";
-            // 
-            // refreshCasesListButton
-            // 
-            this.refreshCasesListButton.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.refreshCasesListButton.Location = new System.Drawing.Point(1015, 30);
-            this.refreshCasesListButton.Name = "refreshCasesListButton";
-            this.refreshCasesListButton.Size = new System.Drawing.Size(75, 29);
-            this.refreshCasesListButton.TabIndex = 2;
-            this.refreshCasesListButton.Text = "Refresh";
-            this.refreshCasesListButton.UseVisualStyleBackColor = true;
-            this.refreshCasesListButton.Click += new System.EventHandler(this.refreshCasesListButton_Click);
             // 
             // menuStrip1
             // 
@@ -161,6 +150,18 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // refreshCasesListButton
+            // 
+            this.refreshCasesListButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshCasesListButton.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.refreshCasesListButton.Location = new System.Drawing.Point(1015, 27);
+            this.refreshCasesListButton.Name = "refreshCasesListButton";
+            this.refreshCasesListButton.Size = new System.Drawing.Size(76, 35);
+            this.refreshCasesListButton.TabIndex = 4;
+            this.refreshCasesListButton.Text = "Refresh";
+            this.refreshCasesListButton.UseVisualStyleBackColor = true;
+            this.refreshCasesListButton.Click += new System.EventHandler(this.refreshCasesListButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,7 +193,6 @@
         private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.ColumnHeader Priority;
         private System.Windows.Forms.Label casesAssignedToYouLabel;
-        private System.Windows.Forms.Button refreshCasesListButton;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -200,5 +200,6 @@
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private Buttons.FlatButton refreshCasesListButton;
     }
 }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.errorMessage = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.warningPictureBox = new System.Windows.Forms.PictureBox();
+            this.okButton = new FogBugzNotificator.Buttons.FlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.warningPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,17 +45,6 @@
             this.errorMessage.TabIndex = 5;
             this.errorMessage.Text = "Can\'t connect to";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(342, 122);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(59, 33);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // warningPictureBox
             // 
             this.warningPictureBox.Image = global::FogBugzNotificator.Properties.Resources.error_pic;
@@ -66,12 +55,24 @@
             this.warningPictureBox.TabIndex = 4;
             this.warningPictureBox.TabStop = false;
             // 
+            // okButton
+            // 
+            this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.okButton.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.okButton.Location = new System.Drawing.Point(341, 120);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(60, 35);
+            this.okButton.TabIndex = 6;
+            this.okButton.Text = "OK";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ConnectionErrorPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 167);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.okButton);
             this.Controls.Add(this.errorMessage);
             this.Controls.Add(this.warningPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -88,6 +89,6 @@
 
         private System.Windows.Forms.PictureBox warningPictureBox;
         private System.Windows.Forms.Label errorMessage;
-        private System.Windows.Forms.Button button1;
+        private Buttons.FlatButton okButton;
     }
 }

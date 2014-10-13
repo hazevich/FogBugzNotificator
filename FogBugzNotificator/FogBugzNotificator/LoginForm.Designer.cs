@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.loginBox = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
-            this.loginButton = new System.Windows.Forms.Button();
             this.errorLabel = new System.Windows.Forms.Label();
             this.loginLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
-            this.settingsButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.settingsButton = new FogBugzNotificator.Buttons.FlatButton();
+            this.loginButton = new FogBugzNotificator.Buttons.FlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,20 +56,6 @@
             this.passwordBox.PasswordChar = '*';
             this.passwordBox.Size = new System.Drawing.Size(197, 26);
             this.passwordBox.TabIndex = 1;
-            // 
-            // loginButton
-            // 
-            this.loginButton.BackColor = System.Drawing.Color.ForestGreen;
-            this.loginButton.DialogResult = System.Windows.Forms.DialogResult.Retry;
-            this.loginButton.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loginButton.Location = new System.Drawing.Point(58, 243);
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(150, 31);
-            this.loginButton.TabIndex = 2;
-            this.loginButton.Text = "Login";
-            this.loginButton.UseVisualStyleBackColor = false;
-            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // errorLabel
             // 
@@ -104,16 +90,6 @@
             this.passwordLabel.TabIndex = 6;
             this.passwordLabel.Text = "Password:";
             // 
-            // settingsButton
-            // 
-            this.settingsButton.Image = global::FogBugzNotificator.Properties.Resources.cogwheel;
-            this.settingsButton.Location = new System.Drawing.Point(12, 238);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(40, 40);
-            this.settingsButton.TabIndex = 7;
-            this.settingsButton.UseVisualStyleBackColor = true;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FogBugzNotificator.Properties.Resources.mainlogo;
@@ -124,17 +100,44 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // settingsButton
+            // 
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.settingsButton.Image = global::FogBugzNotificator.Properties.Resources.cogwheel;
+            this.settingsButton.Location = new System.Drawing.Point(12, 240);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(35, 35);
+            this.settingsButton.TabIndex = 9;
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
+            // loginButton
+            // 
+            this.loginButton.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.loginButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.loginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loginButton.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginButton.ForeColor = System.Drawing.Color.White;
+            this.loginButton.Location = new System.Drawing.Point(77, 241);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(132, 33);
+            this.loginButton.TabIndex = 8;
+            this.loginButton.Text = "Login";
+            this.loginButton.UseVisualStyleBackColor = false;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(221, 286);
             this.Controls.Add(this.settingsButton);
+            this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.loginLabel);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.loginBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -153,11 +156,11 @@
 
         private System.Windows.Forms.TextBox loginBox;
         private System.Windows.Forms.TextBox passwordBox;
-        private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label errorLabel;
         private System.Windows.Forms.Label loginLabel;
         private System.Windows.Forms.Label passwordLabel;
-        private System.Windows.Forms.Button settingsButton;
+        private Buttons.FlatButton loginButton;
+        private Buttons.FlatButton settingsButton;
     }
 }

@@ -48,7 +48,9 @@
             // 
             // setupButton
             // 
-            this.setupButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.setupButton.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.setupButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.setupButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.setupButton.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setupButton.ForeColor = System.Drawing.Color.White;
             this.setupButton.Location = new System.Drawing.Point(332, 131);
@@ -61,6 +63,8 @@
             // 
             // cancelButton
             // 
+            this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.Location = new System.Drawing.Point(12, 131);
             this.cancelButton.Name = "cancelButton";

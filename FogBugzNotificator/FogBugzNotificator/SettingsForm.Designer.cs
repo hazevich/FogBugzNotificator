@@ -31,8 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.urlTextBox = new System.Windows.Forms.TextBox();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
+            this.saveButton = new FogBugzNotificator.Buttons.FlatButton();
+            this.cancelButton = new FogBugzNotificator.Buttons.FlatButton();
             this.SuspendLayout();
             // 
             // label1
@@ -65,10 +65,11 @@
             // 
             // saveButton
             // 
-            this.saveButton.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(284, 67);
+            this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveButton.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.saveButton.Location = new System.Drawing.Point(285, 67);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(61, 35);
+            this.saveButton.Size = new System.Drawing.Size(60, 35);
             this.saveButton.TabIndex = 3;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -76,10 +77,11 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelButton.Font = new System.Drawing.Font("Calibri", 11.25F);
             this.cancelButton.Location = new System.Drawing.Point(12, 67);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(61, 35);
+            this.cancelButton.Size = new System.Drawing.Size(60, 35);
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -112,7 +114,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox urlTextBox;
-        private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Button cancelButton;
+        private Buttons.FlatButton saveButton;
+        private Buttons.FlatButton cancelButton;
     }
 }

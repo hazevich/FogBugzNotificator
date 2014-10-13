@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buttons\FlatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,9 +143,6 @@
       <Project>{38125f23-8c75-4a66-aa4d-129b1bc3d2f5}</Project>
       <Name>FogBugzApi</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cogwheel_318-10805.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\warning_pic.png" />
