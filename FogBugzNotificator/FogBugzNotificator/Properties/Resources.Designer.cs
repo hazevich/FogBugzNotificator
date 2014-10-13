@@ -73,6 +73,16 @@ namespace FogBugzNotificator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap error_pic {
+            get {
+                object obj = ResourceManager.GetObject("error_pic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap warning_pic {
             get {
                 object obj = ResourceManager.GetObject("warning_pic", resourceCulture);

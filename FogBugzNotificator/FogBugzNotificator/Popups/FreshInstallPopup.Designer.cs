@@ -51,7 +51,7 @@
             this.setupButton.BackColor = System.Drawing.Color.LimeGreen;
             this.setupButton.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setupButton.ForeColor = System.Drawing.Color.White;
-            this.setupButton.Location = new System.Drawing.Point(318, 131);
+            this.setupButton.Location = new System.Drawing.Point(332, 131);
             this.setupButton.Name = "setupButton";
             this.setupButton.Size = new System.Drawing.Size(75, 32);
             this.setupButton.TabIndex = 1;
@@ -84,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 175);
+            this.ClientSize = new System.Drawing.Size(420, 175);
             this.Controls.Add(this.warningPictureBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.setupButton);

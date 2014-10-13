@@ -56,7 +56,7 @@ namespace FogBugzNotificator
                             }
                             catch
                             {
-                                MessageBox.Show(string.Format("Cannot login using - {0}", Properties.Settings.Default.FogBugzUrl));
+                                new ConnectionErrorPopup().ShowDialog();
                             }
                             if (_auth)
                             {

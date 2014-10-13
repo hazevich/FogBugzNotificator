@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using FogBugzNotificator.Popups;
 
 namespace FogBugzNotificator
 {
@@ -18,10 +19,11 @@ namespace FogBugzNotificator
 			this.StartPosition = FormStartPosition.CenterScreen;
         }
 
+        private ConnectionErrorPopup _connectionErrorPopup = new ConnectionErrorPopup();
+        NotificationsForm _notificationForm = new NotificationsForm();
         private IFogBugzClient _fogBugz;
 		private List<FogBugzCase> _currentCases;
         private System.Timers.Timer notifTimer = new System.Timers.Timer();
-        private bool _notificationOpened = false;
 
         private void SetupTimer()
         {
@@ -73,18 +75,12 @@ namespace FogBugzNotificator
 
                     Thread notificationThread = new Thread(new ThreadStart(() =>
                     {
-                        if (!_notificationOpened)
-                        {
                             this.Invoke(new MethodInvoker(() =>
                             {
-                                NotificationsForm notificationForm = new NotificationsForm();
-                                notificationForm.CasesCount = newCases.Count;
-                                _notificationOpened = true;
-                                notificationForm.Show();
-                                notificationForm.BringToFront();
-                                _notificationOpened = false;
+                                _notificationForm.CasesCount = newCases.Count;
+                                _notificationForm.Show();
+                                _notificationForm.BringToFront();
                             }));
-                        }
                     }));
 
                     notificationThread.Name = "Notification Thread";
@@ -227,7 +223,7 @@ namespace FogBugzNotificator
             catch(Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                MessageBox.Show(string.Format("Can't access {0}", Properties.Settings.Default.FogBugzUrl));
+                _connectionErrorPopup.ShowDialog();
             }
         }
     }
