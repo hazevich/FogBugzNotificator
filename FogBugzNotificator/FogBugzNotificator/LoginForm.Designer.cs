@@ -49,6 +49,7 @@
             this.loginBox.Name = "loginBox";
             this.loginBox.Size = new System.Drawing.Size(197, 26);
             this.loginBox.TabIndex = 0;
+            this.loginBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_EnterKeyEvent);
             // 
             // passwordBox
             // 
@@ -58,6 +59,7 @@
             this.passwordBox.PasswordChar = '*';
             this.passwordBox.Size = new System.Drawing.Size(197, 26);
             this.passwordBox.TabIndex = 1;
+            this.passwordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_EnterKeyEvent);
             // 
             // errorLabel
             // 

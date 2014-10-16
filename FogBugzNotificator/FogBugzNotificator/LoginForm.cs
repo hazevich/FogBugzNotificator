@@ -110,5 +110,11 @@ namespace FogBugzNotificator
         {
             new SettingsForm().ShowDialog();
         }
+
+        private void textBox_EnterKeyEvent(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                loginButton.PerformClick();
+        }
     }
 }

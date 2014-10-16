@@ -49,6 +49,7 @@
             // 
             // casesListView
             // 
+            this.casesListView.BackColor = System.Drawing.SystemColors.Window;
             this.casesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Id,
             this.Title,
@@ -175,6 +176,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FogBugz Notificator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
