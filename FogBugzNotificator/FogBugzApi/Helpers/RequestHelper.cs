@@ -12,7 +12,7 @@ namespace FogBugzApi.Helpers
     {
         public XmlDocument GetResponseXml(string baseUrl, Dictionary<string, string> args, string method)
         {
-            XmlDocument responseXml = new XmlDocument();
+            var responseXml = new XmlDocument();
             string argsString = args.ToArgsString();
 
             if (method.ToLower().Equals("post"))
@@ -25,7 +25,7 @@ namespace FogBugzApi.Helpers
 
         public XmlDocument GetResponseXml(string baseUrl)
         {
-            XmlDocument responseXml = new XmlDocument();
+            var responseXml = new XmlDocument();
 
             HttpWebRequest request = WebRequest.Create(baseUrl) as HttpWebRequest;
 
@@ -46,13 +46,13 @@ namespace FogBugzApi.Helpers
 
         private XmlDocument GetRequest(string baseUrl, string stringArgs)
         {
-            XmlDocument responseXml = new XmlDocument();
+            var responseXml = new XmlDocument();
 
-            HttpWebRequest request = WebRequest.Create(baseUrl + stringArgs) as HttpWebRequest;
+            var request = WebRequest.Create(baseUrl + stringArgs) as HttpWebRequest;
 
             try
             {
-                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                var response = request.GetResponse() as HttpWebResponse;
                 responseXml.Load(response.GetResponseStream());
             }
             catch (Exception ex)
@@ -67,8 +67,8 @@ namespace FogBugzApi.Helpers
 
         private XmlDocument PostRequest(string baseUrl, string stringArgs)
         {
-            XmlDocument responseXml = new XmlDocument();
-            HttpWebRequest request = WebRequest.Create(baseUrl + stringArgs) as HttpWebRequest;
+            var responseXml = new XmlDocument();
+            var request = WebRequest.Create(baseUrl + stringArgs) as HttpWebRequest;
 
             request.Method = "POST";
             request.ContentType = "multipart/form-data";
@@ -91,7 +91,7 @@ namespace FogBugzApi.Helpers
 
             try
             {
-                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                var response = request.GetResponse() as HttpWebResponse;
 
                 responseXml.Load(response.GetResponseStream());
             }

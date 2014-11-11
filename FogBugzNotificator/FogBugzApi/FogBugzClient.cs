@@ -43,7 +43,7 @@ namespace FogBugzApi
 
         public bool Auth(string login, string password)
         {
-            Dictionary<string, string> args = new Dictionary<string, string>
+            var args = new Dictionary<string, string>
             {
                 { "cmd", "logon" },
                 { "email", login },
@@ -65,7 +65,7 @@ namespace FogBugzApi
             if (!_authorized)
                 throw new InvalidOperationException("Not authorized");
 
-            Dictionary<string, string> args = new Dictionary<string, string>
+            var args = new Dictionary<string, string>
             {
                 { "token", _token },
                 { "cmd", "search" },
@@ -84,7 +84,7 @@ namespace FogBugzApi
         {
             if(_authorized)
             {
-                Dictionary<string, string> args = new Dictionary<string, string>
+                var args = new Dictionary<string, string>
                 {
                     { "cmd", "logoff" },
                     { "token", _token }

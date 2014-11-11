@@ -67,7 +67,7 @@ namespace FogBugzNotificator
                             {
                                 InvokeFromUIThread(() =>
                                 {
-                                    MainForm main = new MainForm(_fbAuth);
+                                    var main = new MainForm(_fbAuth);
                                     main.Show();
                                     this.Close();
                                 });

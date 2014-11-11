@@ -37,21 +37,20 @@ namespace FogBugzNotificator
         private void notifTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             
-            List<FogBugzCase> cases = new List<FogBugzCase>();
+            var cases = new List<FogBugzCase>();
             TryToRequest(() => cases = _fogBugz.GetCasesAssignedToCurrentUser());
 
             if (cases != null || cases.Count > 0)
             {
-                List<FogBugzCase> newCases = new List<FogBugzCase>();
+                var newCases = new List<FogBugzCase>();
 
-                foreach (var c in cases)
-                {
-                    if (!_currentCases.Contains(c))
+                cases.ForEach(c =>
                     {
-                        newCases.Add(c);
-                    }
-
-                }
+                        if (!_currentCases.Contains(c))
+                        {
+                            newCases.Add(c);
+                        }
+                    });
 
                 if (newCases.Count > 0)
                 {
@@ -59,20 +58,20 @@ namespace FogBugzNotificator
                     {
                         casesListView.Items.Clear();
 
-                        foreach (var c in newCases)
-                        {
-                            ListViewItem item = new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority });
-                            item.BackColor = Color.DarkOrange;
-                            casesListView.Items.Add(item);
+                        newCases.ForEach(c =>
+                            {
+                                var item = new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority });
+                                item.BackColor = Color.DarkOrange;
+                                casesListView.Items.Add(item);
 
-                            cases.Remove(c);
-                        }
+                                cases.Remove(c);
+                            });
 
-                        foreach (var c in cases)
-                        {
-                            ListViewItem item = new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority });
-                            casesListView.Items.Add(item);
-                        }
+                        cases.ForEach(c =>
+                            {
+                                var item = new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority });
+                                casesListView.Items.Add(item);
+                            });
                     }));
 
                     Thread notificationThread = new Thread(new ThreadStart(() =>
@@ -99,13 +98,13 @@ namespace FogBugzNotificator
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            List<FogBugzCase> cases = new List<FogBugzCase>();
+            var cases = new List<FogBugzCase>();
             TryToRequest(() => cases = _fogBugz.GetCasesAssignedToCurrentUser());
 
 			_currentCases = cases;
 
-			foreach (var c in cases)
-                casesListView.Items.Add(new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority }));
+			cases.ForEach(c =>
+                casesListView.Items.Add(new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority })));
 
             SetupTimer();
 		}
@@ -130,15 +129,17 @@ namespace FogBugzNotificator
 							casesListView.Items.Clear();
 						}));
 
-                    List<FogBugzCase> cases = new List<FogBugzCase>();
+                    var cases = new List<FogBugzCase>();
 
                     TryToRequest(() => cases = _fogBugz.GetCasesAssignedToCurrentUser());
                      
 					this.Invoke(new MethodInvoker(() =>
 						{
-							foreach (var c in cases)
-								casesListView.Items.Add(new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority }));
-							refreshCasesListButton.Enabled = true;
+                            cases.ForEach(c =>
+                                {
+                                    casesListView.Items.Add(new ListViewItem(new string[] { c.Id.ToString(), c.Title, c.Status, c.Priority }));
+                                    refreshCasesListButton.Enabled = true;
+                                });
 						}));
 				}));
 
